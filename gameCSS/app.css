@@ -8,7 +8,7 @@ body
  }
 .row
 {
-    background-image: url("images/playGround.png");
+    background-image: url("/images/playGround.png");
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
