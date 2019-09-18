@@ -30,8 +30,8 @@ class Game{
     }
     createPlayers(name,type,x,y){
       let players=[];
-      let dx=(type==='player-1')?((x/3)/2):((x-((x/3)/2)));
-      let dy=(type==='player-1')?((y/3)/2):((y-((y/3)/2)));
+      let dx=(type==='player-1')?(Math.floor(Math.random()*(x/3)/2)):(Math.floor(Math.random()*(x-((x/3)/2))));
+      let dy=(type==='player-1')?(Math.floor(Math.random()*(y/3)/2)):(Math.floor(Math.random()*(y-((y/3)/2))));
       let gplayer=new Player(name,type,dx,dy);
       players.push(gplayer);
       let p=new Image();
