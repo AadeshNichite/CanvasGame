@@ -8,10 +8,7 @@ class Player{
     this.type=type;
     this.x=x;
     this.y=y;
-    this.inputKey=(type ==="player-1")?[65, 68, 87, 83]:[37, 39, 38, 40];
-  }
-  createPlayers(){
-
+    this.inputKey=(type ==="player-1")?[65,68,87,83]:[37,39,38,40];
   }
 }
 class Game{
@@ -31,19 +28,19 @@ class Game{
       this.ctx.drawImage(ground,0,0);
       }
     }
-    // createPlayers(namw,){
-    //
-    //     // let players = [];
-    //     // for(let i=0;i<num;i++){
-    //     //     let type = (i<num/2)?'player-1':'player-2';
-    //     //     let name = type+' '+ (i%num/2+1);
-    //     //     let x = Math.floor(Math.random()*this.width);
-    //     //     let y = Math.floor(Math.random()* this.height/3)+(type == 'player-2')? 2*this.height/3:0;
-    //     //     let gPlayer = new Player(name,type,x,y);
-    //     //     players.push(gPlayer);
-    //     // }
-    //     // return players;
-    // }
+    createPlayers(name,type,x,y){
+      let players=[];
+      let dx=(type==='player-1')?((x/3)/2):((x-((x/3)/2)));
+      let dy=(type==='player-1')?((y/3)/2):((y-((y/3)/2)));
+      let gplayer=new Player(name,type,dx,dy);
+      players.push(gplayer);
+      let p=new Image();
+      p.src=(type==='player-1')?'images/player-1.png':'images/player-2.png';
+      p.onload=()=>{
+        this.ctx.drawImage(p,dx,dy);
+      }
+      console.log(players);
+    }
     play(){
          this.ctx.clearRect(0, 0, this.width, this.height); // just clear the whole game area
       //   this.players.forEach(player=>{ player.draw(this.ctx);});
@@ -62,48 +59,9 @@ class Game{
     }
 }
 
-
 let goblinGO=document.getElementById('myCanvas');
-   // let ground=new Image();
-   // ground.src='images/playGround.png';
 let game=new Game(goblinGO,550,550);
-//console.log(ground);
 game.makeBase();
-
-
-
-
-
-
-
-
-
-
-//
-// let canvas = document.createElement("canvas");
-// let ctx = canvas.getContext("2d");
-// canvas.width = 550;
-// canvas.height = 550;
-// document.getElementById('cid').appendChild(canvas);
-// // Background image
-// let bgReady = false;
-// let bgImage = new Image();
-// bgImage.onload = function () {
-// bgReady = true;
-// };
-// bgImage.src = "images/playGround.png";
-//
-// let render = function () {
-// 	if(bgReady) {
-// 		ctx.drawImage(bgImage, 0, 0);
-// 	}
-// };
-// // The main game loop
-// let main = function () {
-// 	render();
-// 	requestAnimationFrame(main);
-// };
-// // Cross-browser support for requestAnimationFrame
-// let w = window;
-// requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
-// main()
+game.createPlayers('alpha','player-1',550,550);
+game.createPlayers('beta','player-2',550,550);
+console.log();
