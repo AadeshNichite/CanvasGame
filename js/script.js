@@ -28,7 +28,7 @@ class Goblin{
   putGoblin(gCtx,gx,gy)
   {
     let g=new Image();
-     gx=(gx/2); gy=(gy/2);
+    (gx<200||gy<200)?gx=gy=275:false;
     g.src='images/goblin.png';
     g.onload=()=>{
       console.log(gx+' , '+gy);
@@ -65,12 +65,13 @@ class Game{
       //return this.players;
     }
      createGoblin(w,h){
+        w=(w/2); h=(h/2);
        let gob=new Goblin('goblin',w,h);
        gob.putGoblin(this.ctx,w,h);
        this.goblin[0]=gob;
      }
     keyPress(e){
-       console.log(this.players);
+      // console.log(this.players);
         this.makeBase();
         //this.createGoblin(this.width,this.height);
         this.players.filter((data) =>(data.inputKey.includes(e.keyCode))).map((mainItem) =>
@@ -86,23 +87,30 @@ class Game{
            let movePlayer2=new Player(per.name,per.type);
            movePlayer2.putPlayer(this.ctx,per.x,per.y);
            let vill=new Goblin('goblin',this.width,this.height);
-            if(this.goblin[0].x===mainItem.x || this.goblin[0].y===mainItem.y)
-            {
-                console.log('if:'+this.goblin[0].x+' , '+this.goblin[0].y);
-               movePlayer1.putPlayer(this.ctx,32,32);
-               movePlayer2.putPlayer(this.ctx,320,320);
-               vill.putGoblin(this.ctx,200,200);
-            }
-            else {
-              console.log('else:'+this.goblin[0].x+' , '+this.goblin[0].y);
-              vill.putGoblin(this.ctx,this.width,this.height);
-            }
-           });
+           vill.putGoblin(this.ctx,(this.width/2),(this.height/2));
+         });
           // this.createGoblin();
-         }
-      );
+
+         this.positionCheck();
+
+    });
+  }
+  positionCheck()
+  {
+     console.log(this.goblin[0]);
+     console.log(this.players);
+     //console.log(this.players[0].x+200);
+    if((this.goblin[0].x===this.players[0].x+32) && (this.goblin[0].y===this.players[0].y+32))
+    {
+        console.log('p1 cross');
     }
+  else  if((this.goblin[0].x===this.players[1].x-32) && (this.goblin[0].y===this.players[1].y+32))
+    {
+        console.log('p2 cross');
+    }
+  }
 }
+
 
 let goblinGO=document.getElementById('myCanvas');
 let game=new Game(goblinGO,550,550);
@@ -110,5 +118,6 @@ game.makeBase();
 game.createPlayers('alpha','player-1',550,550);
 game.createPlayers('beta','player-2',550,550);
 game.createGoblin(550,550);
+game.positionCheck();
 //game.play();
 //console.log(players);
