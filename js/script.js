@@ -17,6 +17,14 @@ class Player{
        canvasCtx.drawImage(p,a,b);
      }
    }
+   // putGoblin(cvsCtx,m,n)
+   // {
+   //   let g=new Image();
+   //   g.src='images/goblin.png';
+   //   g.onload=()=>{
+   //     cvsCtx.drawImage(g,m,n);
+   //   }
+   // }
 }
 class Game{
     constructor(canvas,width, height){
@@ -44,8 +52,20 @@ class Game{
       gplayer.putPlayer(this.ctx,dx,dy);
       this.players.push(gplayer);
       //return this.players;
-
     }
+     createGoblin(){
+       let gx=(this.width/2);
+       let gy=(this.height/2);
+       console.log(gx);
+       console.log(gy);
+       let g=new Image();
+       g.src='images/goblin.png';
+       g.onload=()=>{
+          this.ctx.drawImage(g,gx,gy);
+        }
+      //  this.width=gx;
+      //  this.height=gy;
+     }
     keyPress(e){
        //console.log(this.players);
         this.makeBase();
@@ -62,6 +82,7 @@ class Game{
            let movePlayer2=new Player(per.name,per.type);
              movePlayer2.putPlayer(this.ctx,per.x,per.y);
            });
+          // this.createGoblin();
          }
       );
     }
@@ -72,5 +93,6 @@ let game=new Game(goblinGO,550,550);
 game.makeBase();
 game.createPlayers('alpha','player-1',550,550);
 game.createPlayers('beta','player-2',550,550);
+game.createGoblin();
 //game.play();
 //console.log(players);
