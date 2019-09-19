@@ -17,14 +17,24 @@ class Player{
        canvasCtx.drawImage(p,a,b);
      }
    }
-   // putGoblin(cvsCtx,m,n)
-   // {
-   //   let g=new Image();
-   //   g.src='images/goblin.png';
-   //   g.onload=()=>{
-   //     cvsCtx.drawImage(g,m,n);
-   //   }
-   // }
+}
+class Goblin{
+  constructor(type,x,y)
+  {
+    this.type=type;
+    this.x=x;
+    this.y=y;
+  }
+  putGoblin(gCtx,gx,gy)
+  {
+    let g=new Image();
+     gx=(gx/2); gy=(gy/2);
+    g.src='images/goblin.png';
+    g.onload=()=>{
+      console.log(gx+' , '+gy);
+    gCtx.drawImage(g,gx,gy);
+    }
+  }
 }
 class Game{
     constructor(canvas,width, height){
@@ -34,6 +44,7 @@ class Game{
         canvas.width = width;
         canvas.height = height;
         this.players=[];
+        this.goblin=[];
         this.ctx = canvas.getContext('2d');
         document.addEventListener('keydown',this.keyPress.bind(this));
     }
@@ -53,22 +64,15 @@ class Game{
       this.players.push(gplayer);
       //return this.players;
     }
-     createGoblin(){
-       let gx=(this.width/2);
-       let gy=(this.height/2);
-       console.log(gx);
-       console.log(gy);
-       let g=new Image();
-       g.src='images/goblin.png';
-       g.onload=()=>{
-          this.ctx.drawImage(g,gx,gy);
-        }
-      //  this.width=gx;
-      //  this.height=gy;
+     createGoblin(w,h){
+       let gob=new Goblin('goblin',w,h);
+       gob.putGoblin(this.ctx,w,h);
+       this.goblin[0]=gob;
      }
     keyPress(e){
-       //console.log(this.players);
+       console.log(this.players);
         this.makeBase();
+        //this.createGoblin(this.width,this.height);
         this.players.filter((data) =>(data.inputKey.includes(e.keyCode))).map((mainItem) =>
          {
            (mainItem.inputKey[0]===e.keyCode)?mainItem.x=mainItem.x-10:
@@ -80,7 +84,19 @@ class Game{
            movePlayer1.putPlayer(this.ctx,mainItem.x,mainItem.y);
            let p2=this.players.filter((item) =>(item.type!==mainItem.type)).map((per) =>{
            let movePlayer2=new Player(per.name,per.type);
-             movePlayer2.putPlayer(this.ctx,per.x,per.y);
+           movePlayer2.putPlayer(this.ctx,per.x,per.y);
+           let vill=new Goblin('goblin',this.width,this.height);
+            if(this.goblin[0].x===mainItem.x || this.goblin[0].y===mainItem.y)
+            {
+                console.log('if:'+this.goblin[0].x+' , '+this.goblin[0].y);
+               movePlayer1.putPlayer(this.ctx,32,32);
+               movePlayer2.putPlayer(this.ctx,320,320);
+               vill.putGoblin(this.ctx,200,200);
+            }
+            else {
+              console.log('else:'+this.goblin[0].x+' , '+this.goblin[0].y);
+              vill.putGoblin(this.ctx,this.width,this.height);
+            }
            });
           // this.createGoblin();
          }
@@ -93,6 +109,6 @@ let game=new Game(goblinGO,550,550);
 game.makeBase();
 game.createPlayers('alpha','player-1',550,550);
 game.createPlayers('beta','player-2',550,550);
-game.createGoblin();
+game.createGoblin(550,550);
 //game.play();
 //console.log(players);
