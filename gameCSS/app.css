@@ -15,6 +15,7 @@ body
     width: 100%;
     height: 100%;
     padding: 0;
+    margin: 0 !important;
     margin-left: 0 !important; 
     margin-right: 0 !important;
 } 
@@ -22,10 +23,35 @@ body
 {
     color: burlywood !important;
 }
-.flex-row
+.site-content
 {
     background-position: center;
+    /* margin-left: 25%;
+    margin-top: 3%; */
     height: 100%;
     background-image: url("/images/playGround.png");
     background-repeat: no-repeat;
+    background: cover;
+}
+.row.upper
+{
+   
+    padding: 20;
+    padding: 0;
+    height: 30%; 
+    justify-content: center;
+  
+
+}
+.row.below
+{
+    margin: 0;
+    padding: 0;
+    height: 33%;
+}
+.row.middle
+{
+    margin: 0;
+    padding: 0;
+    height: 33%;
 }
