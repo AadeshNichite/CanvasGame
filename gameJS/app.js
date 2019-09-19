@@ -27,7 +27,14 @@ class player {
     constructor(player1,player2) {
       this.player1 = player1;
       this.player2 = player2;
-      console.log(this.player1.value,this.player2.value)
+      let score1;
+      let score2;
+      console.log(this.player1.value,this.player2.value);
+      let array1=[{name: this.player1.value,score:0}];
+      let array2=[{name: this.player2.value,score:0}]; 
+      localStorage.setItem("player-1",JSON.stringify(array1));
+      localStorage.setItem("player-2",JSON.stringify(array2));
+
     }
   }
 
