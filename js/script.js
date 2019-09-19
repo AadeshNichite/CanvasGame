@@ -6,12 +6,19 @@ class Player{
   {
     this.name=name;
     this.type=type;
-     this.x=x;
-     this.y=y;
-    // this.x=(type==='player-1')?(x>450)?50:x:(x>450)?400:x;
-    //  this.y=(type==='player-1')?(y>420)?50:y:(y>420)?400:y;
+    this.x=x;
+    this.y=y;
     this.inputKey=(type ==="player-1")?[65,68,87,83]:[37,39,38,40];
   }
+  putPlayer(canvasCtx,a,b){
+     let p=new Image();
+     p.src=(this.type==='player-1')?'images/player-1.png':'images/player-2.png';
+     p.onload=()=>{
+       console.log(a);
+       console.log(b);
+       canvasCtx.drawImage(p,a,b);
+     }
+   }
 }
 class Game{
     constructor(canvas,width, height){
@@ -32,43 +39,30 @@ class Game{
       }
     }
     createPlayers(name,type,x,y){
-      //let players=[];
+    //  let players=[];
       let dx=(type==='player-1')?(Math.floor(Math.random()*(x/3)/2)):(Math.floor(Math.random()*(x-((x/3)/2))));
       let dy=(type==='player-1')?(Math.floor(Math.random()*(y/3)/2)):(Math.floor(Math.random()*(y-((y/3)/2))));
-       // let dx=(type==='player-1')?71:400;
-       // let dy=(type==='player-1')?55:400;
-       // console.log(dx);
-       // console.log(dy);
       let gplayer=new Player(name,type,dx,dy);
+      gplayer.putPlayer(this.ctx,dx,dy);
       this.players.push(gplayer);
-      let p=new Image();
-      p.src=(type==='player-1')?'images/player-1.png':'images/player-2.png';
-      p.onload=()=>{
-        // console.log('x:'+dx);
-        // console.log('y:'+dy);
-        this.ctx.drawImage(p,dx,dy);
-      }
-  //  console.log(this.players);
-      return this.players;
+      //return this.players;
+
     }
-    play(){
-         this.ctx.clearRect(0, 0, this.width, this.height); // just clear the whole game area
-         this.players.forEach(player=>{ console.log(player);});
-         requestAnimationFrame(this.play.bind(this))
-     }
     keyPress(e){
-         console.log(this.players);
+        console.log(this.players);
+        this.makeBase();
         this.players.filter((data) =>(data.inputKey.includes(e.keyCode))).map((mainItem) =>
          {
-           //console.log(mainItem);
-           (mainItem.inputKey[0]===e.keyCode)?mainItem.x=mainItem.x-100:
-           (mainItem.inputKey[1]===e.keyCode)?mainItem.x=mainItem.x+100:
-           (mainItem.inputKey[2]===e.keyCode)?mainItem.y=mainItem.y-100:
-           (mainItem.inputKey[3]===e.keyCode)?mainItem.y=mainItem.y+100:
+           console.log(mainItem);
+           (mainItem.inputKey[0]===e.keyCode)?mainItem.x=mainItem.x-10:
+           (mainItem.inputKey[1]===e.keyCode)?mainItem.x=mainItem.x+10:
+           (mainItem.inputKey[2]===e.keyCode)?mainItem.y=mainItem.y-10:
+           (mainItem.inputKey[3]===e.keyCode)?mainItem.y=mainItem.y+10:
            false;
+           let movePlayer=new Player(mainItem.name,mainItem.type);
+           movePlayer.putPlayer(this.ctx,mainItem.x,mainItem.y);
          }
-       );
-       game.play();
+      );
     }
 }
 
