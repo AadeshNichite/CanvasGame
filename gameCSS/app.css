@@ -39,27 +39,26 @@ body
 }
 .row.upper
 {
-   
-    padding: 20;
-    padding: 0;
-    height: 30%; 
+    padding-top: 130;
+    height: 35%; 
     justify-content: center;
     text-align: center;
      font-size: 4rem; 
-
-  
-
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     font-style: oblique;
+    color: white;
+    text-align: center;
 }
 .row.below
 {
     margin: 0;
     padding: 0;
-    height: 33%;
+    height: 35%;
 }
 .row.middle
 {
     margin: 0;
     padding: 0;
-    height: 33%;
+    height: 30%;
     text-align: center;
 }
