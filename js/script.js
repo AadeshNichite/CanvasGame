@@ -99,23 +99,14 @@ class Game{
   {
      console.log(this.goblin[0]);
      console.log(this.players);
-     console.log("p1 x: "+Math.abs(((this.goblin[0].x+this.players[0].x)/2)));
-          console.log("p1 y: "+Math.abs(((this.goblin[0].y+this.players[0].y)/2)));
-               console.log("p2 x: "+Math.abs(((this.goblin[0].x+this.players[1].x)/2)));
-                    console.log("p2 y: "+Math.abs(((this.goblin[0].y+this.players[1].y)/2)));
-                    let p1x=Math.abs(((this.goblin[0].x+this.players[0].x)/2));
-                    let p1y=Math.abs(((this.goblin[0].y+this.players[0].y)/2));
-                    let p2x=Math.abs(((this.goblin[0].x+this.players[1].x)/2));
-                    let p2y=Math.abs(((this.goblin[0].y+this.players[1].y)/2));
-
-  if((p1x+10>=this.goblin[0].x || p1x-10<=this.goblin[0].x)||(p1y+10>=this.goblin[0].y || p1y-10<=this.goblin[0].y))
-    {
-        console.log('p1 cross');
-    }
-  // else if(p1y+10>=this.goblin[0].y || p1x-10<=this.goblin[0].y)
-  //   {
-  //       console.log('p2 cross');
-  //   }
+     if(((Math.abs(this.goblin[0].x-this.players[0].x))<=40) && ((Math.abs(this.goblin[0].y-this.players[0].y))<=70))
+     {
+       console.log('p1 cross');
+     }
+     else if((Math.abs(this.goblin[0].x-this.players[1].x))<=40 && ((Math.abs(this.goblin[0].y-this.players[1].y))<=70))
+     {
+       console.log('p2.cross');
+     }
   }
 }
 
