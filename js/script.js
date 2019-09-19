@@ -14,8 +14,6 @@ class Player{
      let p=new Image();
      p.src=(this.type==='player-1')?'images/player-1.png':'images/player-2.png';
      p.onload=()=>{
-       console.log(a);
-       console.log(b);
        canvasCtx.drawImage(p,a,b);
      }
    }
@@ -49,18 +47,21 @@ class Game{
 
     }
     keyPress(e){
-        console.log(this.players);
+       //console.log(this.players);
         this.makeBase();
         this.players.filter((data) =>(data.inputKey.includes(e.keyCode))).map((mainItem) =>
          {
-           console.log(mainItem);
            (mainItem.inputKey[0]===e.keyCode)?mainItem.x=mainItem.x-10:
            (mainItem.inputKey[1]===e.keyCode)?mainItem.x=mainItem.x+10:
            (mainItem.inputKey[2]===e.keyCode)?mainItem.y=mainItem.y-10:
            (mainItem.inputKey[3]===e.keyCode)?mainItem.y=mainItem.y+10:
            false;
-           let movePlayer=new Player(mainItem.name,mainItem.type);
-           movePlayer.putPlayer(this.ctx,mainItem.x,mainItem.y);
+           let movePlayer1=new Player(mainItem.name,mainItem.type);
+           movePlayer1.putPlayer(this.ctx,mainItem.x,mainItem.y);
+           let p2=this.players.filter((item) =>(item.type!==mainItem.type)).map((per) =>{
+           let movePlayer2=new Player(per.name,per.type);
+             movePlayer2.putPlayer(this.ctx,per.x,per.y);
+           });
          }
       );
     }
