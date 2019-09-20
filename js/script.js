@@ -12,7 +12,7 @@ class Player{
     }
     putPlayer(canvasCtx,a,b){
        let p=new Image();
-       p.src=(this.type==='player-1')?'/images/player-1.png':'/images/player-2.png';
+       p.src=(this.type==='player-1')?'images/player-1.png':'images/player-2.png';
        p.onload=()=>{
          canvasCtx.drawImage(p,a,b);
        }
@@ -29,7 +29,7 @@ class Player{
     {
       let g=new Image();
       //(gx>420||gy>420)?gx=gy=100:false;
-      g.src='/images/goblin.png';
+      g.src='images/goblin.png';
       g.onload=()=>{
         //console.log(gx+' , '+gy);
       gCtx.drawImage(g,gx,gy);
@@ -51,7 +51,7 @@ class Player{
       }
       makeBase(){
         let ground=new Image();
-        ground.src='/images/playGround.png';
+        ground.src='images/playGround.png';
         ground.onload=()=>{
         this.ctx.drawImage(ground,0,0);
         }
@@ -104,9 +104,9 @@ class Player{
              vill.putGoblin(this.ctx,this.goblin[0].x,this.goblin[0].y);
            });
             // this.createGoblin();
-  
+
            this.positionCheck();
-  
+
       });
     }
     positionCheck()
@@ -120,7 +120,7 @@ class Player{
          document.getElementById("player1Score").innerHTML=val+1;
          sessionStorage.setItem("player1Score",val+1);
           this.createGoblin(this.width,this.height);
-          
+
        }
        else if((Math.abs(this.goblin[0].x-this.players[1].x))<=40 && ((Math.abs(this.goblin[0].y-this.players[1].y))<=70))
        {
@@ -130,11 +130,41 @@ class Player{
          sessionStorage.setItem("player2Score",val+1);
          this.createGoblin(this.width,this.height);
        }
-  
+
     }
+    startTimer() {
+           var time_in_minutes = 1;
+           var current_time = Date.parse(new Date());
+           var deadline = new Date(current_time + time_in_minutes*60*1000);
+           function time_remaining(endtime){
+               var t = Date.parse(endtime) - Date.parse(new Date());
+               var seconds = Math.floor( (t/1000) % 60 );
+               var minutes = Math.floor( (t/1000/60) % 60 );
+               var hours = Math.floor( (t/(1000*60*60)) % 24 );
+               var days = Math.floor( t/(1000*60*60*24) );
+               return {'total':t, 'days':days, 'hours':hours, 'minutes':minutes, 'seconds':seconds};
+           }
+           function run_clock(id,endtime){
+               var clock = document.getElementById('timer');
+               function update_clock(){
+                   var t = time_remaining(endtime);
+                   document.getElementById("timer").innerHTML=t.minutes+':'+t.seconds;
+                  // clock.innerHTML = t.minutes+':'+t.seconds;
+                   if(t.total<=0){
+                       clearInterval(timeinterval);
+                       let player1Sc=sessionStorage.getItem("player1Score");
+                       let player2Sc=sessionStorage.getItem("player2Score");
+                       document.getElementById("player1Score").innerHTML=player1Sc;
+                       document.getElementById("player2Score").innerHTML=player2Sc;
+                       location.replace("score.html");
+                    }
+               }
+               update_clock(); // run function once at first to avoid delay
+               var timeinterval = setInterval(update_clock,1000);
+           }
+               run_clock('timer',deadline);
+   }
   }
-  
-  
   let goblinGO=document.getElementById('myCanvas');
   let game=new Game(goblinGO,550,550);
   game.makeBase();
@@ -142,5 +172,6 @@ class Player{
   game.createPlayers('beta','player-2',550,550);
   game.createGoblin(550,550);
   game.positionCheck();
+  game.startTimer();
   //game.play();
   //console.log(players);

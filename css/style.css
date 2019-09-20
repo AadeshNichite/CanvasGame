@@ -4,7 +4,7 @@ Technology used: HTML, CSS, JavaScript, JQuery, Bootstrap
 objective: Create a responsive game using HTML canvas, CSS, JavaScript, jQuery,Bootstrap
 */
 body{
-  background-color:white;
+  /* background-color:white; */
 }
 .pos-center
 {
