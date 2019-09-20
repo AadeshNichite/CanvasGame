@@ -12,7 +12,7 @@ class Player{
     }
     putPlayer(canvasCtx,a,b){
        let p=new Image();
-       p.src=(this.type==='player-1')?'/images/player-1.png':'/images/player-2.png';
+       p.src=(this.type==='player-1')?'images/player-1.png':'images/player-2.png';
        p.onload=()=>{
          canvasCtx.drawImage(p,a,b);
        }
@@ -29,7 +29,7 @@ class Player{
     {
       let g=new Image();
       //(gx>420||gy>420)?gx=gy=100:false;
-      g.src='/images/goblin.png';
+      g.src='images/goblin.png';
       g.onload=()=>{
         //console.log(gx+' , '+gy);
       gCtx.drawImage(g,gx,gy);
@@ -51,7 +51,7 @@ class Player{
       }
       makeBase(){
         let ground=new Image();
-        ground.src='/images/playGround.png';
+        ground.src='images/playGround.png';
         ground.onload=()=>{
         this.ctx.drawImage(ground,0,0);
         }
@@ -104,9 +104,9 @@ class Player{
              vill.putGoblin(this.ctx,this.goblin[0].x,this.goblin[0].y);
            });
             // this.createGoblin();
-  
+
            this.positionCheck();
-  
+
       });
     }
     positionCheck()
@@ -120,7 +120,7 @@ class Player{
          document.getElementById("player1Score").innerHTML=val+1;
          sessionStorage.setItem("player1Score",val+1);
           this.createGoblin(this.width,this.height);
-          
+
        }
        else if((Math.abs(this.goblin[0].x-this.players[1].x))<=40 && ((Math.abs(this.goblin[0].y-this.players[1].y))<=70))
        {
@@ -130,11 +130,11 @@ class Player{
          sessionStorage.setItem("player2Score",val+1);
          this.createGoblin(this.width,this.height);
        }
-  
+
     }
   }
-  
-  
+
+
   let goblinGO=document.getElementById('myCanvas');
   let game=new Game(goblinGO,550,550);
   game.makeBase();
