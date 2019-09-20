@@ -28,7 +28,7 @@ class Goblin{
   putGoblin(gCtx,gx,gy)
   {
     let g=new Image();
-    (gx<200||gy<200)?gx=gy=275:false;
+    //(gx>420||gy>420)?gx=gy=100:false;
     g.src='images/goblin.png';
     g.onload=()=>{
       console.log(gx+' , '+gy);
@@ -47,6 +47,7 @@ class Game{
         this.goblin=[];
         this.ctx = canvas.getContext('2d');
         document.addEventListener('keydown',this.keyPress.bind(this));
+        document.addEventListener('keyup',this.keyPress.bind(this));
     }
     makeBase(){
       let ground=new Image();
@@ -61,11 +62,14 @@ class Game{
       let dy=(type==='player-1')?(Math.floor(Math.random()*(y/3)/2)):(Math.floor(Math.random()*(y-((y/3)/2))));
       let gplayer=new Player(name,type,dx,dy);
       gplayer.putPlayer(this.ctx,dx,dy);
+      console.log('length:'+this.players.length);
+    //  (this.players.length<=3)?true:this.players=[];
       this.players.push(gplayer);
       //return this.players;
     }
      createGoblin(w,h){
-        w=(w/2); h=(h/2);
+        w=Math.floor(Math.random()*(w));
+        h=Math.floor(Math.random()*(h));
        let gob=new Goblin('goblin',w,h);
        gob.putGoblin(this.ctx,w,h);
        this.goblin[0]=gob;
@@ -87,7 +91,7 @@ class Game{
            let movePlayer2=new Player(per.name,per.type);
            movePlayer2.putPlayer(this.ctx,per.x,per.y);
            let vill=new Goblin('goblin',this.width,this.height);
-           vill.putGoblin(this.ctx,(this.width/2),(this.height/2));
+           vill.putGoblin(this.ctx,this.goblin[0].x,this.goblin[0].y);
          });
           // this.createGoblin();
 
@@ -98,15 +102,16 @@ class Game{
   positionCheck()
   {
      console.log(this.goblin[0]);
-     console.log(this.players);
+  //   console.log(this.players[0].name);
      if(((Math.abs(this.goblin[0].x-this.players[0].x))<=40) && ((Math.abs(this.goblin[0].y-this.players[0].y))<=70))
      {
-       console.log('p1 cross');
+        this.createGoblin(this.width,this.height);
      }
      else if((Math.abs(this.goblin[0].x-this.players[1].x))<=40 && ((Math.abs(this.goblin[0].y-this.players[1].y))<=70))
      {
-       console.log('p2.cross');
+       this.createGoblin(this.width,this.height);
      }
+
   }
 }
 
