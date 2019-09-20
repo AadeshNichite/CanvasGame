@@ -14,6 +14,7 @@ It is a simple game application-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
       <div class="container-fluid add-ground">
@@ -21,7 +22,7 @@ It is a simple game application-->
         <div class="col-1">
         </div>
         <div class="col-2">
-<p class="game-name">GoblinGO</p>
+            <p class="game-name">GoblinGO</p>
         </div>
         <div class="col-3">
         </div>
@@ -30,18 +31,28 @@ It is a simple game application-->
           <div class="col-2"></div>
         <div class="col-3">
           <img src="images/player-1.png" alt="player-1">
+          <p style="display:none;" class="score">20</p>
         </div>
         <div class="col-3">
           <img src="images/player-2.png" alt="player-2">
+        <p style="display:none;" class="score">20</p>
         </div>
       </div>
       <div class="row d-flex justify-content-center inputs">
-        <input  id="player1"  type="text" class="input-box" name="" value="" placeholder="Player-1 Name" required/>
-        <input  id="player2"  type="text" class="input-box" name="" value="" placeholder="Player-2 Name" required/>
-
+        <div style="display:block;">
+          <input  id="player1"  type="text" class="input-box" name="" value="" placeholder="Player-1 Name" required/>
+          <input  id="player2"  type="text" class="input-box" name="" value="" placeholder="Player-2 Name" required/>
+        </div>
+        <div style="display:none;">
+          <div class="col-3">
+            <p class="winner">WINNER</p>
+            <p style="color:#ff7700; margin-left:20px; font-size:20px; font-weight:bold;">Player&nbsp;1</p>
+          </div>
+        </div>
     </div>
     <div class="row d-flex justify-content-center">
-      <input type="button" class="btn btn-danger start-btn" value="START" onclick="init()"/>
+      <input type="button" class="btn btn-danger start-btn" value="START" style="display:block;" onclick="init()"/>
+            <input type="button" class="btn btn-warning start-btn" style="display:none;" value="END"/>
     </div>
     </div>
     </body>
