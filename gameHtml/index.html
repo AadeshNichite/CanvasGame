@@ -1,56 +1,49 @@
-<!--
-Author: Debarun Mitra
-Technology used: HTML, CSS, JavaScript, JQuery, Bootstrap
-objective: Create a responsive game using HTML canvas, CSS, JavaScript, jQuery,Bootstrap
--->
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/gameCSS/style.css">
-    <title>GoblinGo</title>
-  </head>
-  <body>
-      <div class="container-fluid pos-center">
-        <div class="row">
-          <div class="col">
-            <p id="player1Name">player-1</p>
-          </div>
-          <div class="col">
-            <p>Time:02:20</p>
-          </div>
-          <div class="col">
-            <p id="player2Name">player-2</p>
-          </div>
+<!--GoblinGo Game
+Author: Aadesh Nichite
+It is a simple game application-->
+
+<html>
+    <head>
+        <title>GoblinGo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+      <div class="container-fluid add-ground">
+        <div class="row d-flex justify-content-center game-bar">
+        <div class="col-1">
         </div>
-        <div class="row">
-          <div class="col">
-            <p id="player1Score">score-1</p>
-          </div>
-          <div class="col">
-            <p></p>
-          </div>
-          <div class="col">
-            <p id="player2Score">score-2</p>
-          </div>
+        <div class="col-2">
+<p class="game-name">GoblinGO</p>
         </div>
-        <div class="row">
-          <div class="col"></div>
-          <div id="cid" class="col-auto">
-            <canvas id="myCanvas">Sorry, your browser doesn't support the &lt;canvas&gt; element.</canvas>
-          </div>
-          <div class="col"></div>
+        <div class="col-3">
         </div>
       </div>
-      <script src="/gameJS/app.js"></script>
-    <script type="text/javascript" src="/gameJS/script.js"></script>
-   
-  </body>
+        <div class="row d-flex justify-content-center">
+          <div class="col-2"></div>
+        <div class="col-3">
+          <img src="images/player-1.png" alt="player-1">
+        </div>
+        <div class="col-3">
+          <img src="images/player-2.png" alt="player-2">
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center inputs">
+        <input  id="player1"  type="text" class="input-box" name="" value="" placeholder="Player-1 Name" required/>
+        <input  id="player2"  type="text" class="input-box" name="" value="" placeholder="Player-2 Name" required/>
+
+    </div>
+    <div class="row d-flex justify-content-center">
+      <input type="button" class="btn btn-danger start-btn" value="START" onclick="init()"/>
+    </div>
+    </div>
+    </body>
+        <script src="js/app.js"></script>
 </html>
