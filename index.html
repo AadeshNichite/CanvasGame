@@ -1,7 +1,6 @@
 <!--GoblinGo Game
 Author: Aadesh Nichite, Debarun Mitra
 It is a simple game application-->
-
 <html>
     <head>
         <title>GoblinGo</title>
@@ -13,8 +12,8 @@ It is a simple game application-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="gameCSS/app.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="./gameCSS/app.css">
+        <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
       <div class="container-fluid add-ground">
@@ -42,11 +41,12 @@ It is a simple game application-->
           <input  id="player2"  type="text" class="input-box" name="" value="" placeholder="Player-2 Name" required/>
         </div>
         </div>
-    </div>
     <div class="row d-flex justify-content-center">
-      <input type="button" class="btn btn-danger start-btn" value="START" onclick="init()"/>
+	<div class="btn-position">
+	      <input type="button" class="btn btn-danger start-btn" value="START" onclick="init()"/>
+	</div>
     </div>
-    </div>
+	</div>
     </body>
-        <script src="gameJS/app.js"></script>
+        <script src="./gameJS/app.js"></script>
 </html>
