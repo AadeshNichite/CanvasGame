@@ -31,7 +31,7 @@ function init1()
   let player1Sco=sessionStorage.getItem("player1Score");
   let val=parseInt(player1Sco, 10);
   let player2Sco=sessionStorage.getItem("player2Score");
-  let val1=parseInt(player1Sco, 10);
+  let val1=parseInt(player2Sco, 10);
       if(val>val1)
       {
         document.getElementById("playerWin").innerHTML=sessionStorage.getItem("player1Name");
