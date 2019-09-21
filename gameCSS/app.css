@@ -1,5 +1,9 @@
 /* GoblinGo Game
+<<<<<<< HEAD
 Author: Aadesh Nichite,Debarun
+=======
+Author: Aadesh Nichite,Debarun Mitra
+>>>>>>> 9352a5a919a2f8d28b9ebdd97cc7a5ff97c47d79
 It is a simple game application */
 body{
   background-color: #00520D;
@@ -44,3 +48,4 @@ body{
   margin-top: 5%;
   width: 10%;
 }
+
