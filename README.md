@@ -31,4 +31,4 @@ Create a GoblinGo game
 
 
 ## Visit:
-(https://aadeshnichite.github.io/CanvasGame/)
+https://aadeshnichite.github.io/CanvasGame/
