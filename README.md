@@ -34,6 +34,6 @@ Create a GoblinGo game
 ![Drag Racing](images/score.PNG)
 
 ## Video:
-[!GoblinGo Video](images/GoblinGo.mp4)
+[GoblinGo Video](images/GoblinGo.mp4)
 ## Visit:
 [GoblinGO](https://aadeshnichite.github.io/CanvasGame/)
