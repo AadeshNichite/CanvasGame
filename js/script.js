@@ -1,4 +1,4 @@
-// Author: Debarun Mitra,Aadesh Nichite
+// Author: Debarun Mitra
 // Technology used: HTML, CSS, JavaScript, JQuery, Bootstrap
 // objective: Create a responsive game using HTML canvas, CSS, JavaScript, jQuery,Bootstrap
 class Player{
@@ -118,21 +118,22 @@ class Player{
 
     }
     startTimer() {
-           var time_in_minutes = 1;
-           var current_time = Date.parse(new Date());
-           var deadline = new Date(current_time + time_in_minutes*60*1000);
+           let time_in_minutes = 1;
+           let current_time = Date.parse(new Date());
+           let deadline = new Date(current_time + time_in_minutes*60*1000);
            function time_remaining(endtime){
-               var t = Date.parse(endtime) - Date.parse(new Date());
-               var seconds = Math.floor( (t/1000) % 60 );
-               var minutes = Math.floor( (t/1000/60) % 60 );
-               var hours = Math.floor( (t/(1000*60*60)) % 24 );
-               var days = Math.floor( t/(1000*60*60*24) );
+               let t = Date.parse(endtime) - Date.parse(new Date());
+               let seconds = Math.floor( (t/1000) % 60 );
+               let minutes = Math.floor( (t/1000/60) % 60 );
+               let hours = Math.floor( (t/(1000*60*60)) % 24 );
+               let days = Math.floor( t/(1000*60*60*24) );
                return {'total':t, 'days':days, 'hours':hours, 'minutes':minutes, 'seconds':seconds};
            }
            function run_clock(id,endtime){
-               var clock = document.getElementById('timer');
+               let clock = document.getElementById('timer');
                function update_clock(){
-                   var t = time_remaining(endtime);
+                   let t = time_remaining(endtime);
+                   (t.seconds<10)?t.seconds='0'+t.seconds:true;
                    document.getElementById("timer").innerHTML=t.minutes+':'+t.seconds;
                    if(t.total<=0){
                        clearInterval(timeinterval);
@@ -144,7 +145,7 @@ class Player{
                     }
                }
                update_clock();
-               var timeinterval = setInterval(update_clock,1000);
+               let timeinterval = setInterval(update_clock,1000);
            }
                run_clock('timer',deadline);
    }
@@ -152,7 +153,7 @@ class Player{
   let goblinGO=document.getElementById('myCanvas');
   let game=new Game(goblinGO,550,550);
   game.makeBase();
-  game.createPlayers('alpha','player-1',550,550);
+  game.createPlayers('alpha','player-1',50,50);
   game.createPlayers('beta','player-2',500,500);
   game.createGoblin(550,550);
   game.positionCheck();
