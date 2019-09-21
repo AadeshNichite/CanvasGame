@@ -70,11 +70,9 @@ class Player{
         document.getElementById("player2Score").innerHTML=player2Sc;
       }
        createGoblin(w,h){
-          console.log('cg 1: '+w+' ,'+h);
           (w>500 && h>500)?w=h=400:(h>480)?h-=20:(w>480)?w-=20:true;
           w=Math.floor(Math.random()*(w));
           h=Math.floor(Math.random()*(h));
-          console.log('cg random 2: '+w+' ,'+h);
          let gob=new Goblin('goblin',w,h);
          gob.putGoblin(this.ctx,w,h);
          this.goblin[0]=gob;
