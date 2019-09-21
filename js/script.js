@@ -152,7 +152,7 @@ class Player{
   let goblinGO=document.getElementById('myCanvas');
   let game=new Game(goblinGO,550,550);
   game.makeBase();
-  game.createPlayers('alpha','player-1',50,50);
+  game.createPlayers('alpha','player-1',550,550);
   game.createPlayers('beta','player-2',500,500);
   game.createGoblin(550,550);
   game.positionCheck();
