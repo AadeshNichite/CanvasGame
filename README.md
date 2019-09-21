@@ -27,8 +27,8 @@ Create a GoblinGo game
 #### 4) Player who score more will win.
 
 ## Image:
-
-
-
+![Drag Racing](images/start.PNG)
+![Drag Racing](images/play.PNG)
+![Drag Racing](images/score.PNG)
 ## Visit:
 https://aadeshnichite.github.io/CanvasGame/
