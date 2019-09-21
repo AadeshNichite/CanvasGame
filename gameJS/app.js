@@ -38,7 +38,7 @@ function init1()
       }
 	else if(val===val1)
 	{
-		        document.getElementById("playerWin").innerHTML='Game&nbsp;Draw';
+		        document.getElementById("playerWin").innerHTML='Game&nbsp;'+'Draw';
 	}
       else {
         document.getElementById("playerWin").innerHTML=sessionStorage.getItem("player2Name");
