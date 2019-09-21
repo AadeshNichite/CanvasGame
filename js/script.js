@@ -1,4 +1,4 @@
-// Author: Debarun Mitra,Aadesh Nichite
+// Author: Debarun Mitra
 // Technology used: HTML, CSS, JavaScript, JQuery, Bootstrap
 // objective: Create a responsive game using HTML canvas, CSS, JavaScript, jQuery,Bootstrap
 class Player{
@@ -28,10 +28,8 @@ class Player{
     putGoblin(gCtx,gx,gy)
     {
       let g=new Image();
-      //(gx>420||gy>420)?gx=gy=100:false;
       g.src='images/goblin.png';
       g.onload=()=>{
-        //console.log(gx+' , '+gy);
       gCtx.drawImage(g,gx,gy);
       }
     }
@@ -57,37 +55,32 @@ class Player{
         }
       }
       createPlayers(name,type,x,y){
-      //  let players=[];
         let dx=(type==='player-1')?(Math.floor(Math.random()*(x/3)/2)):(Math.floor(Math.random()*(x-((x/3)/2))));
         let dy=(type==='player-1')?(Math.floor(Math.random()*(y/3)/2)):(Math.floor(Math.random()*(y-((y/3)/2))));
         let gplayer=new Player(name,type,dx,dy);
         gplayer.putPlayer(this.ctx,dx,dy);
-        console.log('length:'+this.players.length);
-      //  (this.players.length<=3)?true:this.players=[];
         this.players.push(gplayer);
-        //return this.players;
         let player1nm=sessionStorage.getItem("player1Name");
         let player2nm=sessionStorage.getItem("player2Name");
-        // console.log(player1nm);
         document.getElementById("player1Name").innerHTML=player1nm;
         document.getElementById("player2Name").innerHTML=player2nm;
-        //return this.players;
         let player1Sc=sessionStorage.getItem("player1Score");
         let player2Sc=sessionStorage.getItem("player2Score");
         document.getElementById("player1Score").innerHTML=player1Sc;
         document.getElementById("player2Score").innerHTML=player2Sc;
       }
        createGoblin(w,h){
+          console.log('cg 1: '+w+' ,'+h);
+          (w>500 && h>500)?w=h=400:(h>480)?h-=20:(w>480)?w-=20:true;
           w=Math.floor(Math.random()*(w));
           h=Math.floor(Math.random()*(h));
+          console.log('cg random 2: '+w+' ,'+h);
          let gob=new Goblin('goblin',w,h);
          gob.putGoblin(this.ctx,w,h);
          this.goblin[0]=gob;
        }
       keyPress(e){
-        // console.log(this.players);
           this.makeBase();
-          //this.createGoblin(this.width,this.height);
           this.players.filter((data) =>(data.inputKey.includes(e.keyCode))).map((mainItem) =>
            {
              (mainItem.inputKey[0]===e.keyCode)?mainItem.x=mainItem.x-10:
@@ -103,16 +96,11 @@ class Player{
              let vill=new Goblin('goblin',this.width,this.height);
              vill.putGoblin(this.ctx,this.goblin[0].x,this.goblin[0].y);
            });
-            // this.createGoblin();
-
            this.positionCheck();
-
       });
     }
     positionCheck()
     {
-       //console.log(this.goblin[0]);
-    //   console.log(this.players[0].name);
        if(((Math.abs(this.goblin[0].x-this.players[0].x))<=40) && ((Math.abs(this.goblin[0].y-this.players[0].y))<=70))
        {
         let player1Sco=sessionStorage.getItem("player1Score");
@@ -120,7 +108,6 @@ class Player{
          document.getElementById("player1Score").innerHTML=val+1;
          sessionStorage.setItem("player1Score",val+1);
           this.createGoblin(this.width,this.height);
-
        }
        else if((Math.abs(this.goblin[0].x-this.players[1].x))<=40 && ((Math.abs(this.goblin[0].y-this.players[1].y))<=70))
        {
@@ -133,7 +120,7 @@ class Player{
 
     }
     startTimer() {
-           var time_in_minutes = 1;
+           var time_in_minutes = 10;
            var current_time = Date.parse(new Date());
            var deadline = new Date(current_time + time_in_minutes*60*1000);
            function time_remaining(endtime){
@@ -149,7 +136,6 @@ class Player{
                function update_clock(){
                    var t = time_remaining(endtime);
                    document.getElementById("timer").innerHTML=t.minutes+':'+t.seconds;
-                  // clock.innerHTML = t.minutes+':'+t.seconds;
                    if(t.total<=0){
                        clearInterval(timeinterval);
                        let player1Sc=sessionStorage.getItem("player1Score");
@@ -159,7 +145,7 @@ class Player{
                        location.replace("score.html");
                     }
                }
-               update_clock(); // run function once at first to avoid delay
+               update_clock();
                var timeinterval = setInterval(update_clock,1000);
            }
                run_clock('timer',deadline);
@@ -168,10 +154,8 @@ class Player{
   let goblinGO=document.getElementById('myCanvas');
   let game=new Game(goblinGO,550,550);
   game.makeBase();
-  game.createPlayers('alpha','player-1',550,550);
-  game.createPlayers('beta','player-2',550,550);
+  game.createPlayers('alpha','player-1',50,50);
+  game.createPlayers('beta','player-2',500,500);
   game.createGoblin(550,550);
   game.positionCheck();
   game.startTimer();
-  //game.play();
-  //console.log(players);
