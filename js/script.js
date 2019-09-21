@@ -1,4 +1,4 @@
-// Author: Debarun Mitra
+// Author: Debarun Mitra,Aadesh Nichite
 // Technology used: HTML, CSS, JavaScript, JQuery, Bootstrap
 // objective: Create a responsive game using HTML canvas, CSS, JavaScript, jQuery,Bootstrap
 class Player{
@@ -120,7 +120,7 @@ class Player{
 
     }
     startTimer() {
-           var time_in_minutes = 10;
+           var time_in_minutes = 2;
            var current_time = Date.parse(new Date());
            var deadline = new Date(current_time + time_in_minutes*60*1000);
            function time_remaining(endtime){
