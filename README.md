@@ -28,7 +28,9 @@ Create a GoblinGo game
 
 ## Image:
 ![Drag Racing](images/start.PNG)
+#### ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ![Drag Racing](images/play.PNG)
+#### ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ![Drag Racing](images/score.PNG)
 ## Visit:
-https://aadeshnichite.github.io/CanvasGame/
+[GoblinGO](https://aadeshnichite.github.io/CanvasGame/)
