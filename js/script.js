@@ -1,4 +1,4 @@
-// Author: Debarun Mitra
+// Author: Debarun Mitra, Aadesh Nichite
 // Technology used: HTML, CSS, JavaScript, JQuery, Bootstrap
 // objective: Create a responsive game using HTML canvas, CSS, JavaScript, jQuery,Bootstrap
 class Player{
