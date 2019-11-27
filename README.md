@@ -26,13 +26,6 @@ Create a GoblinGo game
 #### 3) Timer runs for one minute.
 #### 4) Player who score more will win.
 
-## Image:
-![Drag Racing](images/start.PNG)
-#### ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-![Drag Racing](images/play.PNG)
-#### ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-![Drag Racing](images/score.PNG)
-
 ## Video:
 [GoblinGo Video](images/GoblinGo.mp4)
 ## Visit:
