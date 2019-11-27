@@ -120,7 +120,7 @@ class Player{
 
     }
     startTimer() {
-           var time_in_minutes = 2;
+           var time_in_minutes = 1;
            var current_time = Date.parse(new Date());
            var deadline = new Date(current_time + time_in_minutes*60*1000);
            function time_remaining(endtime){

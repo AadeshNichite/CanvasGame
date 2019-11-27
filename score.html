@@ -13,8 +13,8 @@ It is a simple game application-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="gameCSS/app.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="./gameCSS/app.css">
+        <link rel="stylesheet" href="./css/style.css">
     </head>
     <body onload="init1();">
       <div class="container-fluid add-ground">
@@ -30,11 +30,11 @@ It is a simple game application-->
         <div class="row d-flex justify-content-center">
           <div class="col-2"></div>
         <div class="col-3">
-          <img src="/images/player-1.png" alt="player-1">
+          <img src="images/player-1.png" alt="player-1">
           <p id="p1score" class="score">20</p>
         </div>
         <div class="col-3">
-          <img src="/images/player-2.png" alt="player-2">
+          <img src="images/player-2.png" alt="player-2">
         <p id="p2score" class="score">20</p>
         </div>
       </div>
@@ -47,9 +47,11 @@ It is a simple game application-->
         </div>
     </div>
     <div class="row d-flex justify-content-center">
+	<div class="btn-position">
             <input type="button" class="btn btn-warning start-btn" value="END" onclick="end()"/>
     </div>
+	</div>
     </div>
     </body>
-        <script src="gameJS/app.js"></script>
+        <script src="./gameJS/app.js"></script>
 </html>

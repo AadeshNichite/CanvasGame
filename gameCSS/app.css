@@ -16,21 +16,21 @@ body{
   background-repeat: no-repeat;
   background-origin: content-box;
   background-position: center;
-  height: 80%;
+  height: 100%;
 }
 .game-bar
 {
    padding-left: 15%;
 }
 .game-Name{
-  padding-top: 10%;
+  padding-top: 80%;
   color: white;
   font-family: cursive;
   font-size: 40px;
 }
 .inputs
 {
-  padding-top: 5%;
+  padding-top: 3%;
   padding-left: 0px;
 }
 .input-box
@@ -43,9 +43,11 @@ body{
   height: 30px;
   outline: none;
 }
+.btn-position{
+	padding-top:50px;
+}
 .start-btn{
   border-radius: 25px;
-  margin-top: 5%;
-  width: 10%;
+  width: 100%;
 }
 

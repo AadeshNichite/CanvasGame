@@ -6,11 +6,12 @@ objective: Create a responsive game using HTML canvas, CSS, JavaScript, jQuery,B
 .pos-center
 {
   max-width: 1000px;
+  max-height:600px;
   margin-left: 20%;
 }
 #cid
 {
-  margin-left: -30%;
+  margin-left: -22%;
 }
 .player-icon
 {
