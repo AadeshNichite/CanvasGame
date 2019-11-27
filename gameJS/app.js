@@ -36,6 +36,10 @@ function init1()
       {
         document.getElementById("playerWin").innerHTML=sessionStorage.getItem("player1Name");
       }
+	else if(val===val1)
+	{
+		        document.getElementById("playerWin").innerHTML='Game&nbsp;'+'Draw';
+	}
       else {
         document.getElementById("playerWin").innerHTML=sessionStorage.getItem("player2Name");
       }
